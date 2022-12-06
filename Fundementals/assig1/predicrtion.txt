@@ -1,0 +1,58 @@
+undefined
+I'm the example!
+
+
+//--------------------1---------------
+
+undefined
+p:undefined
+
+
+///////---------------2
+
+
+magnet
+
+
+//-----------------3
+
+super cool
+
+
+p : cool undefined
+
+/----------------------4
+
+
+chicken
+half-chicken
+gone
+
+///// ----------5
+
+syntax error 
+
+/----------6
+
+
+
+
+/-------------------6
+
+
+undefined
+rock
+r&b
+disco
+
+/---------------------7
+san jose
+seattle
+burbank
+san jose
+
+//-------------8
+p:
+error 
+edited:
+closed for now

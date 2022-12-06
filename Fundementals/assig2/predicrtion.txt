@@ -1,0 +1,35 @@
+undefined
+I'm the example!
+
+
+//--------------------1---------------
+
+Tesla
+Mercedes
+
+///////---------------2
+
+
+error in name 
+dont have to declare
+
+//-----------------3
+
+12345
+undefined
+
+p : 12345
+
+
+/----------------------4
+
+
+false
+true
+
+///// ----------5
+
+value
+six times [1, 5, 1, 8, 3, 3]
+1
+5
