@@ -85,29 +85,33 @@
 
 
 
-var sayHello = function(name) {
-  console.log('Hello ' + name);
-};
+// var sayHello = function(name) {
+//   console.log('Hello ' + name);
+// };
 
-console.log(sayHello("ali")) ;
+// console.log(sayHello("ali")) ;
 
-var doingexersise = (x) =>{
+// var doingexersise = (x) =>{
   
-  for(var i=100;i>=x;i-=5)
-  console.log("number dec :"+i);
-}
-doingexersise(5);
+//   for(var i=100;i>=x;i-=5)
+//   console.log("number dec :"+i);
+// }
+// doingexersise(5);
 
-var not_do = (f) => console.log( "number is "+f);
-not_do(552);
+// var not_do = (f) => console.log( "number is "+f);
+// not_do(552);
 
-var square = function(key){
-  var has= new Map();
-  has.set('a',"depending on sit 1")
-  has.set('n',key);
-  return has;
-}
-// console.log(square(55).get('n'));
-var t =square(5).keys();
-console.log(item.next());
+// var square = function(key){
+//   var has= new Map();
+//   has.set('a',"depending on sit 1")
+//   has.set('n',key);
+//   return has;
+// }
+// // console.log(square(55).get('n'));
+// var t =square(5).keys();
+// console.log(item.next());
+
+
+
+
 
