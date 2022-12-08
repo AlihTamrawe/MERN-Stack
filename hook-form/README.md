@@ -1,2 +1,2 @@
-Hookform userd for onlinre data form show 
+Hookform userd for online  data form show sync 
 ![Getting Started](./public/img2.png)
