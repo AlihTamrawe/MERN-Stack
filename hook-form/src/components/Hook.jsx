@@ -17,13 +17,18 @@ const  Hook = (props) =>{
     const [confirmpassword ,setConfirmpassword] = useState("");
     const [confirmpasswordError ,setconfirmpasswordError] = useState("");
 
+    const [confirms ,setconfirm] = useState("");
+    const [confirmsError ,setconfirmsError] = useState("");
+
 
 
     const createUser = (e) => {
         e.preventDefault();
         const newUser = { firstname,lastname, email, password,confirmpassword };
                 console.log("Welcome", newUser);
+                
     };
+    
 
     const handlefirstname = (e) => {
         setfirstname(e.target.value);
@@ -60,7 +65,7 @@ const  Hook = (props) =>{
         setpassword(e.target.value);
         if(e.target.value.length < 1) {
             setpasswordError("password is required!");
-        } else if(e.target.value.length <= 8) {
+        } else if(e.target.value.length < 8) {
             setpasswordError("password must be 8 characters or longer!");
         } else {
             setpasswordError("");
@@ -69,9 +74,11 @@ const  Hook = (props) =>{
 
     const handleconpassword= (e) => {
         setConfirmpassword(e.target.value);
-        if(e.target.value==password) {
+        if(e.target.value.length < 1) {
+            setconfirmpasswordError("password is required!");
+        } else if(e.target.value!=password) {
             setconfirmpasswordError("Confirm your password as Same");
-        }else if(e.target.value.length <= 8){
+        }else if(e.target.value.length < 8){
             setconfirmpasswordError("confirm must be 8 characters or longer!");
 
         } 
@@ -86,7 +93,7 @@ const  Hook = (props) =>{
             <form style={{border:"solid 2px gray"}} onSubmit={ createUser }>
                 <div  >
                     <label>Firstname: </label> 
-                    <input type="text" onChange={ (e) => setfirstname(e.target.value)  } onKeyDown={handlefirstname} value={ firstname } />
+                    <input type="text" onChange={ (e,handlefirstname) => setfirstname(e.target.value)  } onKeyDown={handlefirstname} value={ firstname } />
                     {
                     firstnameError ?
                     <p style={{color:'red'}}>{ firstnameError }</p> :
@@ -122,7 +129,7 @@ const  Hook = (props) =>{
                 </div>
                 <div >
                     <label>Confirm  Password: </label>
-                    <input type="password" onChange={ (e) => setConfirmpassword(e.target.value)   }   onKeyDown={handleconpassword} value={confirmpassword} />
+                    <input type="password" onChange={ handleconpassword }    value={confirmpassword} />
                     {
                     confirmpasswordError ?
                     <p style={{color:'red'}}>{ confirmpasswordError }</p> :
@@ -137,6 +144,11 @@ const  Hook = (props) =>{
                 <p>Email : {email}</p>
                 <p>password :{password}</p>
                 <p>confirmpassword :{confirmpassword}</p>
+                {
+                    confirms ?
+                    <p style={{color:'red'}}>{ confirmsError }</p> :
+                    ''
+                }
             </div>
         </div>
     )
