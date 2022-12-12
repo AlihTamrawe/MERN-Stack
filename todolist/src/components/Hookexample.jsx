@@ -27,7 +27,7 @@ export default () => {
             />
             <button onClick={handleSubmit}>Add</button>
 
-            {list.map((item) => 
+            {[...list].reverse().map((item) => 
            <div>
           
              <Doing items={item}/>
