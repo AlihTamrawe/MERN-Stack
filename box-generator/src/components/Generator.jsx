@@ -8,7 +8,7 @@ const  Generator = () => {
 
     const handel = (e)=> {
       e.preventDefault();
-      console.log(sqaure)
+      console.log(e)
       arr.push(sqaure);
       setAllsquare([...allsqaure,sqaure]);
      allsqaure.map(item=>console.log(item));

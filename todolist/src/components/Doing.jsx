@@ -4,6 +4,8 @@ function Doing(props) {
 
     const {items}=props;
     const [textdecoration,setTextDecoration] =useState("none")
+    const [isclicked,setisclicked] =useState(false)
+
     const styles = {
         
         textDecoration: 'none'
@@ -11,26 +13,30 @@ function Doing(props) {
         
     var flag= false;
 
-    const  handelcheckB =()=>{
-        if(!flag){
-            setTextDecoration('none');
-            flag=true;
-            console.log(flag);
-        }
-        else{
-            setTextDecoration('line-through');
-            flag=false;
-            console.log(flag);
+    const  handelcheckB =(event)=>{
+      if (event.target.checked) {
+        console.log('✅ Checkbox is checked');
+        setTextDecoration('line-through');
 
+      } else {
+        console.log('⛔️ Checkbox is NOT checked');
+        setTextDecoration('');
         }
+       
+
+
+        
+      
 
     }
-  
+   
+   
  
   return (
     <div >
-    <p style={{textDecoration:textdecoration}}> {items}</p>
-    <input type="checkbox" onClick={handelcheckB}></input>
+    <p style={{textDecoration:textdecoration}} > {items}</p>
+    <input type="checkbox"   onChange={e=>handelcheckB(e)}  />
+    
     </div>
   )
 }

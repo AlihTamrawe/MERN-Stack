@@ -20,21 +20,23 @@ export default () => {
  
     return (
         <>
-            {list.map((item) => 
-           <div>
-          
-             <Doing items={item}/>
-             <button type="submit" onClick={ handleSubmitdeleted } > delete</button> 
-            
-             </div>     
-
-        
-            )}
+           
             <input
                 onChange={e => setVal(e.target.value)}
                 value={val}
             />
             <button onClick={handleSubmit}>Add</button>
+
+            {list.map((item) => 
+           <div>
+          
+             <Doing items={item}/>
+             <button type="submit" onClick={ handleSubmitdeleted }   > delete</button> 
+            
+             </div>     
+
+        
+            )}
         </>
     );
 }    

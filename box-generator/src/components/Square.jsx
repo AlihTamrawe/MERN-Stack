@@ -13,7 +13,7 @@ const Square =(props) => {
         
   return (
     <div>
-        <p>{colors}</p>
+        <p >{colors}</p>
         <div  style={rectangle } />   
         {props.children}
     </div>
