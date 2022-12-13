@@ -1,11 +1,11 @@
 import './App.css';
-import Hookexample from './components/Hookexample';
-import React from 'react';
+import React from 'react'
+import ApiPok from './components/ApiPok';
 
 function App() {
   return (
     <div className="App">
-      <Hookexample></Hookexample>
+      <ApiPok/>
     </div>
   );
 }

@@ -20,23 +20,23 @@ export default () => {
  
     return (
         <>
-           
+           <div>
             <input
                 onChange={e => setVal(e.target.value)}
                 value={val}
             />
             <button onClick={handleSubmit}>Add</button>
-
+        <ul>
             {[...list].reverse().map((item) => 
-           <div>
-          
+          <li>
              <Doing items={item}/>
              <button type="submit" onClick={ handleSubmitdeleted }   > delete</button> 
-            
-             </div>     
-
+             </li>
+   
         
             )}
+             </ul>
+    </div>
         </>
     );
 }    
