@@ -12,7 +12,7 @@ const  ApiPok =(props)=> {
     const [loaded,setLoaded]=useState(false);
     const [id, setid] = useState(0)
     const [person, setperson] = useState(0)
-    const [kind, setkind] = useState("people")
+    const [kind, setkind] = useState("starships")
 
 
     const navigate = useNavigate();

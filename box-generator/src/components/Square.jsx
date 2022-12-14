@@ -1,19 +1,20 @@
-import React  from 'react'
+import React, { useState }  from 'react'
 
 const Square =(props) => {
-    const {colors} =props.colore;
+    const {boxs} =props.box;
     const rectangle ={
         display: 'inline-block',
-        width: '100px',
-        height: '100px',
-        background: props.colore,
+        width: props.box.width+'px',
+        height: props.box.height+'px',
+        background: props.box.color,
         margin: '10px'
 
       }
         
+   console.log(props.box)
   return (
     <div>
-        <p >{colors}</p>
+      
         <div  style={rectangle } />   
         {props.children}
     </div>

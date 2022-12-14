@@ -2,16 +2,23 @@ import React , {useState} from 'react'
 import Square from './Square';
 
 const  Generator = () => {
-    const [sqaure,setsquare] = useState("");
-    const [allsqaure,setAllsquare] = useState([]);
-    const arr = [];
+    const [color,setcolor] = useState([]);
+    const [width,setwidth] = useState([]);
+    const [height,setheight] = useState([]);
 
+    const [Albox,setAlbox] = useState([]);
+
+
+  
     const handel = (e)=> {
       e.preventDefault();
-      console.log(e)
-      arr.push(sqaure);
-      setAllsquare([...allsqaure,sqaure]);
-     allsqaure.map(item=>console.log(item));
+      const newSqaure ={
+        height:height,
+        width:width,
+        color:color
+      }
+      setAlbox([...Albox,newSqaure]);
+     
 
 
     }
@@ -21,17 +28,21 @@ const  Generator = () => {
   return (
     <div>
         <form  onSubmit={handel}>
-            <input type="text" onChange={e =>setsquare(e.target.value)} />
+
+           <div> <input type="text" placeholder='color' onChange={e =>setcolor(e.target.value)} /></div> 
+           <div>   <input type="number" placeholder='height' onChange={e =>setheight(e.target.value)} /></div> 
+           <div>  <input type="number" placeholder='width' onChange={e =>setwidth(e.target.value)} /></div> 
+
             <input type="submit" value="send"/>
             
             
         </form>
-        <Square colore={sqaure}></Square>
+        {/* <Square box={}></Square> */}
 
         <div className='farm'>
-            {allsqaure.map((item) =>              
+            {Albox.map((item) =>              
             
-              <Square colore={item}></Square>
+              <Square box={item}></Square>
         
             
 
