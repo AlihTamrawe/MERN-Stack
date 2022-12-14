@@ -1,18 +1,23 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
+import { useNavigate, useParams} from "react-router-dom";
 
 const  ApiPok =(props)=> {
   
     const [ourresstarships,setOurresstarships]=useState([]);
     const [ourrespeople,setOurrespeople]=useState([]);
     const [ourresplantes,setOurresplantes]=useState([]);
-
+    const {mid} = useParams(0)
+    const kinds =props.kind
     const [loaded,setLoaded]=useState(false);
     const [id, setid] = useState(0)
     const [person, setperson] = useState(0)
     const [kind, setkind] = useState("people")
 
 
+    const navigate = useNavigate();
+    
+   
 
 
 
@@ -36,6 +41,13 @@ const  ApiPok =(props)=> {
   
 
     const handelSearch =(e)=>{
+      e.preventDefault();
+      // if(kinds!=null){
+      //   const num = ourrespeople[mid];
+      //   console.log(num.name)
+      //   setperson(num)
+      // }
+      // else
       if(kind=="planets"){
         const num = ourresplantes[id];
         console.log(num.name)
@@ -43,10 +55,11 @@ const  ApiPok =(props)=> {
 
       }
       if(kind=="people"){
+        
         const num = ourrespeople[id];
         console.log(num.name)
         setperson(num)
-
+        navigate("/people/"+id);
       }
       if(kind=="starships"){
         const num = ourresstarships[id];
@@ -56,7 +69,7 @@ const  ApiPok =(props)=> {
 
       }
      
-      
+
 
     }
 
@@ -65,26 +78,18 @@ const  ApiPok =(props)=> {
 
 
     <div>
-        <h4>Fetch Pokemon</h4>
-           
-
-                <select onChange={e=>setkind(e.target.value) } >
-       
-        
+        <h4>Fetch Pokemon</h4>    
+                <select onChange={e=>setkind(e.target.value) } >        
         <option value={"starships"}>starships</option>
         <option value={"planets"}>planets</option>
         <option value={"people"}>people</option>
 
-        
-             </select>
-             <input type="number"  onChange={e=>setid(e.target.value)} />
-             <button onClick={handelSearch}>Search</button>
+        </select>
+        <input type="number"  onChange={e=>setid(e.target.value)} />
+        <button onClick={handelSearch}>Search</button>
 
               { kind=="people" ? 
-
-             
-             <ul>
-             
+              <ul>
                 <h1> Name :{person.name}</h1>
                 <p>Height : {person.height}</p>
                 <p>Mass : {person.mass}</p>
