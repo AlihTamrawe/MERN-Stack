@@ -1,6 +1,7 @@
 import React , {useState} from 'react'
 import Square from './Square';
 
+
 const  Generator = () => {
     const [color,setcolor] = useState([]);
     const [width,setwidth] = useState([]);
@@ -23,6 +24,11 @@ const  Generator = () => {
 
     }
 
+    const handeldelete =(i) =>{
+      alert("delete")
+      setAlbox(Albox.slice(Albox.indexOf(i)))
+
+    }
 
 
   return (
@@ -40,10 +46,11 @@ const  Generator = () => {
         {/* <Square box={}></Square> */}
 
         <div className='farm'>
-            {Albox.map((item) =>              
-            
-              <Square box={item}></Square>
-        
+            {Albox.map((item,i) =>              
+            <div onClick={handeldelete} >
+              <Square box={item} ></Square>
+              </div>
+              
             
 
 )
