@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const { faker } = require('@faker-js/faker');
 const { json } = require("express");
+var {jsonConcat} = require("json-concat")
+
+
+
 
 const users = [
   { firstName: "Reimu",  lastName: "Hakurei"    },
@@ -62,6 +66,24 @@ app.post("/api/users",(req,res)=>{
   res.json( { status: "ok" } );
 
 });
+
+
+app.get("/api/company" ,(req,res)=>{
+  res.json( createcompany())
+
+})
+app.get("/api/user/" ,(req,res)=>{
+  res.json(createuser())
+
+})
+app.get("/api/user/company" ,(req,res)=>{
+  var va1 ={
+    user:createuser() ,
+    company:createcompany()
+  }
+  
+  res.json(va1 );
+})
 
 app.get("/api/users/:id", (req, res) => {
   // we can get this `id` variable from req.params
