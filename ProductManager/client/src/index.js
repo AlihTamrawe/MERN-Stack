@@ -8,6 +8,6 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <App />
-        </BrowserRouter>z
+        </BrowserRouter>
     </React.StrictMode>
 );
