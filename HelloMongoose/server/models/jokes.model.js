@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 
 const JokeSchema = new mongoose.Schema({
-	name: String,
-	age: Number
-});
+	setup: String,
+	punchline: String,
+}
+, { timestamps: true });
 
 const Joke = mongoose.model("Joke", JokeSchema);
 
 module.exports = Joke;
+
