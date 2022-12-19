@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import People from './components/People';
 import Planets from './components/Planets';
+import AxiosAp from './components/AxiosAp';
 
 
 const Home = (props) => { 
@@ -38,6 +39,8 @@ function App(props) {
      <p> <Link to={"/about"}>Go to About </Link></p> 
       <p><Link to={"/"}>Go to Api </Link></p>
       <p><Link to={"/home"}>Go to Home </Link></p>
+      <p><Link to={"/pok"}>Go to poki </Link></p>
+
 
 
       <Routes>
@@ -47,6 +50,9 @@ function App(props) {
         <Route path="/home/" element={<Home />} />
 
         <Route path="/" element={<ApiPok />} />
+
+        <Route path="/pok" element={<AxiosAp />} />
+
 
         <Route path="/people/:id" element={<People/>} />
         {/* <Route path="/people/:id" element={<ApiPok kind="people"/>} /> */}
