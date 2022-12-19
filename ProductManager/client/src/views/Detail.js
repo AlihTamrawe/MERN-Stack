@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
     
 const Detail = (props) => {
     const [product, setproduct] = useState({})
-    // const { id } = useParams();
+    const { id } = useParams();
     
     useEffect(() => {
-        axios.get('http://localhost:8000/api/product/' +props.id)
+        axios.get('http://localhost:8000/api/product/' +id)
             .then(res => setproduct(res.data))
             .catch(err => console.error(err));
     }, []);
@@ -15,7 +15,7 @@ const Detail = (props) => {
     return (
         <div>
             <p>hi d</p>
-            <p>Title: {product._id}</p>
+            <p>Title: {product.title}</p>
             <p>Price: {product.price}</p>
             <p>Description: {product.description}</p>
 
