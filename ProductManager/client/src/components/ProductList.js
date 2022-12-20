@@ -1,18 +1,19 @@
-import React from 'react';
+import React ,{useEffect,useState} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-    
+import { Link, useNavigate } from 'react-router-dom';
+import DeleteButton from './DeleteButton';
+
 const ProductList = (props) => {
-  
-    
-    const deleteProduct = (personId) => {
-        axios.delete('http://localhost:8000/api/product/' + personId)
-            .then(res => {
-                // props.removeFromDom(personId)
-            })
-            .catch(err => console.error(err));
+    const navigate = useNavigate()
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:8000/api/product')
+            .then(res => setProducts(res.data));
+    }, [])
+    const removeFromDom = productid => {
+    setProducts(products.filter(product => product._id != productid))
     }
-    
     return (
         <div>
             {props.product.map((product, idx) => {
@@ -21,9 +22,7 @@ const ProductList = (props) => {
                         {product.title}
                     </Link>
                     |
-                    <button onClick={(e)=>{deleteProduct(product._id)}}>
-                        Delete
-                    </button>
+                    <DeleteButton productid={product._id} successCallback={() => removeFromDom(product._id)} />
                 </p>
             })}
         </div>

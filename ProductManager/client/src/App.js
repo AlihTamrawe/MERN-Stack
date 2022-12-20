@@ -8,6 +8,7 @@ import {
   Link,
 } from "react-router-dom";
 import Update from './views/Update'
+import CreateProduct from './views/CreateProduct';
 function App() {
   return (
     <div className="App">
@@ -18,6 +19,7 @@ function App() {
 
       <Routes>
       <Route path="/" element={ <Main />} />
+      <Route path="/create" element={ <CreateProduct />} />
 
       <Route path="/product/:id/edit" element={ <Update />} />
       <Route  path="/product/:id" element={<Detail/>} /> 

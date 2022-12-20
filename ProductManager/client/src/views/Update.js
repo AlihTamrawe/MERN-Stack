@@ -1,43 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useParams,useNavigate } from "react-router-dom";
+import ProductForm from '../components/ProductForm';
 
     
 const Update = (props) => {
     let navigate = useNavigate();
 
     const { id } = useParams();
-    const [title, setTitle] = useState('');
-    const [price, setPrice] = useState(0);
-    const [description,setdescription] = useState('')
+    const [product, setproduct] = useState({});
     
+    const [loaded, setLoaded] = useState(false);
+
     useEffect(() => {
         axios.get('http://localhost:8000/api/product/' + id)
             .then(res => {
-                setTitle(res.data.title);
-                setPrice(res.data.price);
-                setdescription(res.data.description)
+                setproduct(res.data);
+                setLoaded(true)
+                console.log(product.title)
+
             })
-    }, []);
-    
-    const updatePerson = e => {
-        e.preventDefault();
-        axios.put('http://localhost:8000/api/product/' + id, {
-            title,
-            price,
-            description
-        })
-            .then(res => console.log(res))
-            .catch(err => console.error(err));
-            return navigate("/");
-
-
+    }, [])
+    const updateProduct = product => {
+        axios.put('http://localhost:8000/api/product/' + id, product)
+            .then(res => console.log(res));
     }
+    
     
     return (
         <div>
             <h1>Update this Product</h1>
-            <form onSubmit={updatePerson}>
+            {/* <form onSubmit={updatePerson}>
                 <p>
                     <label>Title</label><br />
                     <input type="text" 
@@ -60,7 +53,9 @@ const Update = (props) => {
                     onChange={(e) => { setdescription(e.target.value) }} />
                 </p>
                 <input type="submit" />
-            </form>
+            </form> */}
+                    {loaded && <ProductForm onSubmitProp={updateProduct} initialdescription={product.description} initialprice={product.price} initialtitle={product.title}></ProductForm>}
+
         </div>
     )
 }

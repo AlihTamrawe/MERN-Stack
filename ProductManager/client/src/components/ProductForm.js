@@ -1,24 +1,34 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-export default () => {
+import { useNavigate } from "react-router-dom";
+
+
+export default (props) => {
+    let navigate = useNavigate();
+    const { initialtitle, initialprice,initialdescription, onSubmitProp } = props;
     //keep track of what is being typed via useState hook
-    const [title, setTitle] = useState(""); 
-    const [price, setPrice] = useState(0);
-    const [description, setDescription] = useState("");
+    
+    const [title, setTitle] = useState(initialtitle); 
+    const [price, setPrice] = useState(initialprice);
+    const [description, setDescription] = useState(initialdescription);
 
     //handler when the form is submitted
     const onSubmitHandler = e => {
-
+        
         //prevent default behavior of the submit
         e.preventDefault();
         //make a post request to create a new person
-        axios.post('http://localhost:8000/api/product/new', {
-            title,
-            price,
-            description
-        })
-            .then(res=>{console.log(res);setTitle("");})
-            .catch(err=>console.log(err))
+        // axios.post('http://localhost:8000/api/product/new', {
+        //     title,
+        //     price,
+        //     description
+        // })
+        //     .then(res=>{console.log(res);setTitle("");})
+        //     .catch(err=>console.log(err))
+        onSubmitProp({title,price, description});
+
+            return navigate("/");
+
     }
     //onChange to update firstName and lastName
     return (

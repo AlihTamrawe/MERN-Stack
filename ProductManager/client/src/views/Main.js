@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
     import axios from 'axios'
-import ProductForm from '../components/ProductForm';
 import ProductList from '../components/ProductList';
+import { Link } from 'react-router-dom';
 
 
 const Main = (props) => {
@@ -17,7 +17,9 @@ const Main = (props) => {
             .catch(err => console.error(err));
     },[products]);
     
-
+    const removeFromDom = productid => {
+        setproducts(products.filter(product => product._id != productid));
+    }
     // const removeFromDom = personId => {
     //     setproducts(products.filter(pr => pr._id != prId));
     // }
@@ -26,7 +28,7 @@ const Main = (props) => {
     return (
         <div>
 
-           <ProductForm/>
+           <Link to="/create">Add some products</Link>
            <hr/>
            {loaded && <ProductList product={products} />}
         </div>
