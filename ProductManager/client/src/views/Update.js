@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
+
     
 const Update = (props) => {
+    let navigate = useNavigate();
+
     const { id } = useParams();
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState(0);
@@ -26,6 +29,8 @@ const Update = (props) => {
         })
             .then(res => console.log(res))
             .catch(err => console.error(err));
+            return navigate("/");
+
 
     }
     
