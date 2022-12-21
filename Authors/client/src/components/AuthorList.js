@@ -14,17 +14,42 @@ const AuthorList = (props) => {
     const removeFromDom = authorid => {
     setauthors(authors.filter(author => author._id != authorid))
     }
+
+    const moveToEdit = (id,e) =>{
+        console.log("hi")
+        e.preventDefault();
+
+        return navigate(`/author/${id}/edit`);
+    }
     return (
         <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td> Author Name</td>
+                        <td> action</td>
+                    </tr>
+                </tbody>
             {props.author.map((author, idx) => {
-                return <p key={idx}>
+                return <tbody>
+                    <tr>
+                        <td>
+ <p key={idx}>
+                    
                     <Link to={"/author/" + author._id}>
                         {author.name}
-                    </Link>
-                    |
+                    </Link>  </p>
+                    </td>
+                    <hr/>
+                    <td>
                     <DeleteButton authorid={author._id} successCallback={() => removeFromDom(author._id)} />
-                </p>
+                    
+                    <button onClick={e=>moveToEdit(author._id,e)}>Edit</button>
+                    </td>
+              |</tr>
+                </tbody>
             })}
+            </table>
         </div>
     )
 }

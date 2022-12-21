@@ -3,6 +3,7 @@ import AuthorForm from '../components/AuthorForm';
 
 import axios from 'axios';
 import { useParams,useNavigate } from "react-router-dom";
+import CancelButton from '../components/CancelButton';
 
 const Createauthor =() => {
     const [authors, setauthors] = useState([]);
@@ -25,7 +26,9 @@ const Createauthor =() => {
     }
   return (
     <div>
+        <h2>Create New Author</h2>
         <AuthorForm onSubmitProp={createauthor} initialname="" ></AuthorForm>
+        <CancelButton></CancelButton>
     </div>
   )
 }

@@ -13,9 +13,9 @@ function App() {
   return (
     <div className="App">
 
-
-         <p> <Link to="/">home</Link></p>
-      <h1>Welcome </h1>
+        <h1>Favorite authors</h1>
+        <p> <Link to="/">home</Link></p>
+   
 
       <Routes>
       <Route path="/" element={ <Main />} />

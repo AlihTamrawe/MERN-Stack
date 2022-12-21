@@ -28,9 +28,12 @@ const Main = (props) => {
 
     return (
         <div>
-
+           
            <Link to="/create">Add some Authors</Link>
            <hr/>
+            <div>
+           <p>we have qoutes by:</p>
+           </div>
            {loaded && <AuthorList author={Authors} />}
         </div>
     )

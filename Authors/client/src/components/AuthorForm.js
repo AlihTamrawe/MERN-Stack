@@ -32,7 +32,7 @@ export default (props) => {
     //onChange to update firstName and lastName
     return (
         <div>
-            <p>hi</p>
+            <p>Form</p>
         <form onSubmit={onSubmitHandler}>
             <p>
                 <label>Name</label><br/>

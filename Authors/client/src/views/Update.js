@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useParams,useNavigate } from "react-router-dom";
 import AuthorForm from '../components/AuthorForm';
+import CancelButton from '../components/CancelButton';
 
     
 const Update = (props) => {
@@ -29,7 +30,7 @@ const Update = (props) => {
     
     return (
         <div>
-            <h1>Update this author</h1>
+            <h2>Update this author</h2>
             {/* <form onSubmit={updatePerson}>
                 <p>
                     <label>Title</label><br />
@@ -55,6 +56,7 @@ const Update = (props) => {
                 <input type="submit" />
             </form> */}
                     {loaded && <AuthorForm onSubmitProp={updateauthor} initialname={author.name} ></AuthorForm>}
+                    <CancelButton/>
 
         </div>
     )
