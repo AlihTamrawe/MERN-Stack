@@ -6,8 +6,8 @@ module.exports.createAuthor = (request, response) => {
     Author.create({
         name,
     })
-        .then(Author => response.json(Author))
-        .catch(err => response.json(err));
+        .then(Author => response.json(Author))
+        .catch(err => response.status(400).json(err))
 }
 
 module.exports.getAllAuthor = (request, response) => {
@@ -23,9 +23,10 @@ module.exports.getAuthor = (request, response) => {
 }
 
 module.exports.updateAuthor = (request, response) => {
-    Author.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
+    Author.findOneAndUpdate({_id: request.params.id}, request.body, {new:true,runValidators:true})
         .then(updatedAuthor => response.json(updatedAuthor))
-        .catch(err => response.json(err))
+        .catch(err => response.status(400).json(err))
+
 }
 
 

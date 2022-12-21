@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import { useParams,useNavigate } from "react-router-dom";
+import Button from '@mui/material/Button';
 
 export default props => {
     const navigate = useNavigate()
@@ -15,8 +16,8 @@ export default props => {
     }
     
     return (
-        <button onClick={deleteAuthor}>
+        <Button variant="contained"onClick={deleteAuthor}>
             Delete
-        </button>
+        </Button>
     )
 }

@@ -12,19 +12,33 @@ const Update = (props) => {
     const [author, setauthor] = useState({});
     
     const [loaded, setLoaded] = useState(false);
+    const [errors, setErrors] = useState([]); 
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/author/' + id)
             .then(res => {
                 setauthor(res.data);
                 setLoaded(true)
-                console.log(author.title)
+                console.log(author.name)
 
             })
     }, [])
     const updateauthor = author => {
         axios.put('http://localhost:8000/api/author/' + id, author)
-            .then(res => console.log(res));
+            .then(res => console.log(res))
+            .then(()=> navigate('/'))
+            .catch(err=>{
+                const errorResponse = err.response.data.errors; // Get the errors from err.response.data
+                const errorArr = []; // Define a temp error array to push the messages in
+                for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
+                    errorArr.push(errorResponse[key].message)
+                }
+                // Set Errors
+                setErrors(errorArr);
+            }) 
+
+            
+            
     }
     
     
@@ -55,7 +69,7 @@ const Update = (props) => {
                 </p>
                 <input type="submit" />
             </form> */}
-                    {loaded && <AuthorForm onSubmitProp={updateauthor} initialname={author.name} ></AuthorForm>}
+                    {loaded && <AuthorForm onSubmitProp={updateauthor} initialname={author.name} errorsfromcreat={errors}></AuthorForm>}
                     <CancelButton/>
 
         </div>

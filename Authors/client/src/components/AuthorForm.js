@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+
+
 
 export default (props) => {
-    let navigate = useNavigate();
-    const { initialname, onSubmitProp } = props;
+    const { initialname, onSubmitProp,errorsfromcreat } = props;
     //keep track of what is being typed via useState hook
     
     const [name, setname] = useState(initialname); 
@@ -25,21 +28,26 @@ export default (props) => {
         //     .then(res=>{console.log(res);setTitle("");})
         //     .catch(err=>console.log(err))
         onSubmitProp({name});
-
-            return navigate("/");
+        
+            
 
     }
-    //onChange to update firstName and lastName
+    //onChange to update 
     return (
         <div>
             <p>Form</p>
         <form onSubmit={onSubmitHandler}>
+        { 
+           errorsfromcreat.map((err, index) => <p key={index}>{err}</p>)}
             <p>
                 <label>Name</label><br/>
-                <input type="text" onChange={(e)=>setname(e.target.value)} value={name}/>
+                <TextField
+          id="outlined-required"
+          label="Required"
+          defaultValue="Hello World" onChange={(e)=>setname(e.target.value)} value={name}/>
             </p>
          
-            <input type="submit"/>
+            <Button variant="contained" type='submit' >submit</Button>
         </form>
 
         </div>
