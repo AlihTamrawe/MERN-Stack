@@ -9,7 +9,7 @@ const Update = (props) => {
     let navigate = useNavigate();
 
     const { id } = useParams();
-    const [team, setteam] = useState({});
+    const [team, setTeam] = useState({});
     
     const [loaded, setLoaded] = useState(false);
     const [errors, setErrors] = useState([]); 
@@ -17,16 +17,16 @@ const Update = (props) => {
     useEffect(() => {
         axios.get('http://localhost:8000/api/team/' + id)
             .then(res => {
-                setteam(res.data);
+                setTeam(res.data);
                 setLoaded(true)
-                console.log(team.name)
+                console.log(team.nameTeam)
 
             })
     }, [])
     const updateteam = team => {
         axios.put('http://localhost:8000/api/team/' + id, team)
             .then(res => console.log(res))
-            .then(()=> navigate('/'))
+            .then(()=> navigate('/player/list'))
             .catch(err=>{
                 const errorResponse = err.response.data.errors; // Get the errors from err.response.data
                 const errorArr = []; // Define a temp error array to push the messages in
@@ -69,7 +69,7 @@ const Update = (props) => {
                 </p>
                 <input type="submit" />
             </form> */}
-                    {loaded && <TeamForm onSubmitProp={updateteam} initialname={team.name} errorsfromcreat={errors}></TeamForm>}
+                    {loaded && <TeamForm onSubmitProp={updateteam} initialname={team.nameTeam} initialposition={team.position} errorsfromcreat={errors}></TeamForm>}
                     <CancelButton/>
 
         </div>
