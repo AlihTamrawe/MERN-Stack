@@ -5,6 +5,7 @@ const  Chat= (props)=> {
     const [msg,setMsg] =useState('')
     const [masseges,setMasseges]=useState([])
     const {user} = props;
+    
     useEffect(() => {
       // we need to set up all of our event listeners
       // in the useEffect callback function
@@ -26,7 +27,9 @@ const  Chat= (props)=> {
       }
   return (
     <div>
-        {masseges.map((mss,i)=><p key={i}><span>{mss}</span></p>)}
+
+      <h1>Welcome {user}</h1>
+        {masseges.map((mss,i)=><p key={i}><span style={ mss.includes(user+':')?{ backgroundColor:'blue'}:{backgroundColor:'red'}}>{mss}</span></p>)}
 
         <form onSubmit={handelSubmit}>
             <label htmlFor=""> Your Massege</label>
